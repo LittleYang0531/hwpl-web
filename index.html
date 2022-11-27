@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+        <title>Honeyworks Premium Live (web version)</title>
+        <link rel="shortcut icon" href="/favicon.png"/>
+        <script src="./pixi.min.js"></script>
+        <script src="./lyui/env.js"></script>
+        <script src="./lyui/alert.js"></script>
+        <script src="./lyui/touch.js"></script>
+        <script src="./core/gameRunning.js"></script>
+        <link rel="stylesheet" type="text/css" href="./style.css"/>
+        <link rel="stylesheet" type="text/css" href="./lyui/css/alert.css"/>
+        <link rel="stylesheet" type="text/css" href="./lyui/css/touch.css"/>
+        <link rel="stylesheet" type="text/css" href="./core/gameRunning.css"/>
+    </head>
+    <body onselectstart="return false;" unselectable="on" oncontextmenu="return false;">
+        <script>
+            setTimeout(async function(){
+                while (true) {
+                    if (window.innerWidth < window.innerHeight)
+                        await alert("ヒント", "画面は水平に置いてください", "リトライ");
+                    await sleep(100);
+                }
+            }, 0);
+            async function loading() {
+                await alert("エラー", "通信エラーが発生しました。\n電波状况の良いところでプレイしてください\nリトライしますか？", "リトライ");
+                // document.body.style.backgroundColor = "white";
+            }
+            async function run() {
+                await loading();
+                gameTitle();
+            }
+            run();
+        </script>
+    </body>
+</html>

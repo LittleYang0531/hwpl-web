@@ -1,0 +1,16 @@
+@keyframes gameTitle {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+.game {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: gameTitle 0.3s linear;
+    background-color: black;
+}

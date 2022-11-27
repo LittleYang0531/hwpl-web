@@ -1,0 +1,60 @@
+@media screen and (orientation: portrait) {
+    body {
+        -webkit-transform:rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+    
+}
+@media screen and (orientation: landscape) {
+    body {
+        -webkit-transform:rotate(0);
+        -moz-transform: rotate(0);
+        -ms-transform: rotate(0);
+        transform: rotate(0);
+    }
+}
+
+@font-face {
+    font-family: 'AokaneEB';
+    src: url("./font/FOT-Aokane\ Std\ EB.otf");
+}
+
+body {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+    touch-action: none;
+    background-color: black;
+    overflow: hidden;
+    font-family: AokaneEB;
+}
+
+
+.hr {
+    height: 1px;
+    background-image: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(208, 179, 223, 1) 15%,
+            rgba(208, 179, 223, 1) 85%,
+            rgba(255, 255, 255, 0) 100%);
+}
+
+TextView {
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+Button {
+    width: 105px;
+    height: 24px;
+    font-size: 12px;
+    border: 1px solid;
+    border-color: rgb(245, 201, 241);
+    border-radius: 100px;
+    background-color: rgba(212, 0, 255, 0.33);
+    color: rgb(245, 201, 241);
+    box-shadow: 0px 0px 5px 1px rgba(212, 0, 255, 0.33);
+}

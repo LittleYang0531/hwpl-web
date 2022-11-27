@@ -1,0 +1,47 @@
+@keyframes touch_appear_outer {
+    from {
+        opacity: 1;
+        transform: scale(1, 1), rotate(0deg);
+    } to {
+        opacity: 0;
+        transform: scale(1.5, 1.5) rotate(30deg);
+    }
+}
+
+@keyframes touch_appear_inner {
+    from {
+        opacity: 1;
+        transform: scale(1, 1), rotate(0deg);
+    } to {
+        opacity: 0;
+        transform: scale(1.5, 1.5) rotate(-30deg);
+    }
+}
+
+.touch {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+}
+
+.touch-div {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+}
+
+.touch-outer {
+    animation: touch_appear_outer 0.5s, easy-out;
+    top: 0px;
+}
+
+.touch-inner {
+    animation: touch_appear_inner 0.5s, easy-out;
+    top: -100px;
+}
