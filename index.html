@@ -5,17 +5,60 @@
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
         <title>Honeyworks Premium Live (web version)</title>
         <link rel="shortcut icon" href="/favicon.png"/>
-        <script src="./pixi.min.js"></script>
-        <script src="./lyui/env.js"></script>
+        <script src="./load.js"></script>
+        <!-- <script src="./lyui/env.js"></script>
         <script src="./lyui/alert.js"></script>
         <script src="./lyui/touch.js"></script>
         <script src="./core/gameRunning.js"></script>
         <link rel="stylesheet" type="text/css" href="./style.css"/>
         <link rel="stylesheet" type="text/css" href="./lyui/css/alert.css"/>
         <link rel="stylesheet" type="text/css" href="./lyui/css/touch.css"/>
-        <link rel="stylesheet" type="text/css" href="./core/gameRunning.css"/>
+        <link rel="stylesheet" type="text/css" href="./core/gameRunning.css"/> -->
+        <style>
+            body {
+                margin: 0px;
+            }
+
+            #progress {
+                width: 440px;
+                height: 100px;
+                position: absolute;
+                left: calc(50% - 220px);
+            }
+
+            #progress-bar {
+                width: 100%;
+                height: 25px;
+                border: 2px solid;
+                border-color: rgba(212, 0, 255, 0.33);
+                box-shadow: 0px 0px 10px 1px rgba(212, 0, 255, 0.33);
+                border-radius: 25px;
+                padding: 2px;
+            }
+
+            #progress-loaded {
+                width: 0%;
+                background-color: rgba(212, 0, 255, 0.33);
+                height: 25px;
+                border-radius: 25px;
+            }
+
+            #progress-text {
+                width: 100%;
+                height: 30px;
+                color: white;
+            }
+        </style>
     </head>
     <body onselectstart="return false;" unselectable="on" oncontextmenu="return false;">
+        <div id="progress">
+            <div id="progress-bar">
+                <div id="progress-loaded"></div>
+            </div>
+            <div id="progress-text">
+                <center><p id="text" style="margin: 8px">Loading Resource...</p></center>
+            </div>
+        </div>
         <script>
             setTimeout(async function(){
                 while (true) {
@@ -26,10 +69,12 @@
             }, 0);
             async function loading() {
                 await alert("エラー", "通信エラーが発生しました。\n電波状况の良いところでプレイしてください\nリトライしますか？", "リトライ");
-                // document.body.style.backgroundColor = "white";
             }
             async function run() {
-                await loading();
+                await init();
+                var e = document.getElementById("progress");
+                document.body.removeChild(e);
+                // await loading();
                 gameTitle();
             }
             run();

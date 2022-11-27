@@ -24,6 +24,7 @@ async function touch_init() {
     document.body.style.position = "absolute";
     document.body.style.left = "0px";
     document.body.style.top = "0px";
+    document.body.style.margin = "0px";
     if (isAndroid || isIos) {
         document.body.addEventListener("touchstart", function(event){
             event = event || window.event;

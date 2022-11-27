@@ -1,0 +1,25 @@
+{
+    "url": "https://hwpm.littleyang.ml",
+    "css": [
+        "/style.css",
+        "/lyui/css/alert.css",
+        "/lyui/css/touch.css",
+        "/core/gameRunning.css"
+    ],
+    "js": [
+        "/lyui/env.js",
+        "/lyui/alert.js",
+        "/lyui/touch.js",
+        "/core/gameRunning.js"
+    ],
+    "assets": [
+        "/assets/alert-background.png",
+        "/assets/bg_ingametitle.png",
+        "/assets/lane_L.png",
+        "/assets/logo.png",
+        "/assets/piano.png",
+        "/assets/touch-inner.png",
+        "/assets/touch-outer.png",
+        "/font/FOT-Aokane Std EB.otf"
+    ]
+}
