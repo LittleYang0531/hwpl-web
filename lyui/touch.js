@@ -14,16 +14,16 @@ function show_touch(x, y) {
     div_inner.style.backgroundImage = "url('/assets/touch-inner.png')";
     touch.appendChild(div_inner);
     document.body.appendChild(touch);
-    setTimeout(function(){document.body.removeChild(touch);}, 500);
+    setTimeout(function(){document.body.removeChild(touch);}, 600);
 }
 
 async function touch_init() {
     await sleep(100);
-    document.body.style.height = Math.min(window.innerHeight, window.innerWidth) + "px";
-    document.body.style.width = Math.max(window.innerHeight, window.innerWidth) + "px";
+    window.addEventListener("resize", function(){
+        document.body.style.height = Math.min(window.innerHeight, window.innerWidth) + "px";
+        document.body.style.width = Math.max(window.innerHeight, window.innerWidth) + "px";
+    });
     document.body.style.position = "absolute";
-    document.body.style.left = "0px";
-    document.body.style.top = "0px";
     document.body.style.margin = "0px";
     if (isAndroid || isIos) {
         document.body.addEventListener("touchstart", function(event){

@@ -37,11 +37,11 @@
 }
 
 .touch-outer {
-    animation: touch_appear_outer 0.5s, easy-out;
+    animation: touch_appear_outer 0.6s, ease-in-out;
     top: 0px;
 }
 
 .touch-inner {
-    animation: touch_appear_inner 0.5s, easy-out;
+    animation: touch_appear_inner 0.6s, ease-in-out;
     top: -100px;
 }

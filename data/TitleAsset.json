@@ -1,0 +1,21 @@
+{
+    "SystemAssetPacks": [
+        {
+            "Type": 10,
+            "TermId": 22118302,
+            "AssetValue": "bg_title_Anniv2_2"
+        },
+        {
+            "Type": 11,
+            "TermId": 22118303,
+            "AssetValue": "BGM_Title_Anniv_2"
+        },
+        {
+            "Type": 12,
+            "TermId": 22118302,
+            "AssetValue": "TitleLogo_Anniv2"
+        }
+    ],
+    "Code": 0,
+    "Message": null
+}

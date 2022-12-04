@@ -17,6 +17,8 @@
         <style>
             body {
                 margin: 0px;
+                touch-action: none;
+                cursor: pointer;
             }
 
             #progress {
@@ -47,6 +49,7 @@
                 width: 100%;
                 height: 30px;
                 color: white;
+                padding-top: 5px;
             }
         </style>
     </head>
@@ -56,26 +59,53 @@
                 <div id="progress-loaded"></div>
             </div>
             <div id="progress-text">
-                <center><p id="text" style="margin: 8px">Loading Resource...</p></center>
+                <center>
+                    <text id="text" style="margin: 8px">Loading Resource...</text>
+                    <text id="loading-text"></text>
+                </center>
             </div>
         </div>
         <script>
-            setTimeout(async function(){
-                while (true) {
-                    if (window.innerWidth < window.innerHeight)
-                        await alert("ヒント", "画面は水平に置いてください", "リトライ");
-                    await sleep(100);
-                }
-            }, 0);
+            var config = new Array; // 网站配置
+            var assets_object = new Array; // 资源配置
+            var assets_map = new Object; // 资源配置映射表
+
+            // 音乐对象及其映射表
+            var Music_object = new Array; // 音乐对象
+            var MusicParts_map = new Object; // 音乐片段映射表
+            var Musics_map = new Object; // 歌曲简略信息映射表
+            var Singers_map = new Object; // 歌手映射表
+            var Songs_map = new Object; // 歌曲详细信息映射表
+
+            var musicpart_id = 1010013; // 目标音乐片段id
+            var music_id = 0; // 目标音乐id
+            var song_id = 0; // 目标歌曲id
+            var singer_id = 0; // 歌手id
+            var difficult = 4; // 乐曲难度
+            var pic_url = ""; // MVTitleImage url
+            var logo_url = ""; // logo url
+            var video_url = ""; // video url
+            var music_url = ""; // music url
+        </script>
+        <script>
             async function loading() {
                 await alert("エラー", "通信エラーが発生しました。\n電波状况の良いところでプレイしてください\nリトライしますか？", "リトライ");
             }
             async function run() {
                 await init();
+                clearInterval(e);
+                setTimeout(async function(){
+                    while (true) {
+                        if (window.innerWidth < window.innerHeight)
+                            await alert("ヒント", "画面は水平に置いてください", "リトライ");
+                        await sleep(100);
+                    }
+                }, 0);
                 var e = document.getElementById("progress");
                 document.body.removeChild(e);
                 // await loading();
-                gameTitle();
+                await objectSolver();
+                await gameTitle();
             }
             run();
         </script>

@@ -4,6 +4,8 @@ var isShow = false;
 function alertInsert(e) {
     alertQueue.push(e);
     if (isShow == false) {
+        alertQueue[0].style.marginLeft = Math.max(window.innerHeight, window.innerWidth) / 2 - 220 + "px";
+        alertQueue[0].style.marginTop = Math.min(window.innerHeight, window.innerWidth) / 2 - 150 + "px";
         document.body.appendChild(alertQueue[0]);
         alertQueue.shift();
         isShow = true;
@@ -18,10 +20,21 @@ async function alertDestory() {
     await sleep(100);
     document.body.removeChild(e);
     if (alertQueue.length) {
+        alertQueue[0].style.marginLeft = Math.max(window.innerHeight, window.innerWidth) / 2 - 220 + "px";
+        alertQueue[0].style.marginTop = Math.min(window.innerHeight, window.innerWidth) / 2 - 150 + "px";
         document.body.appendChild(alertQueue[0]);
         alertQueue.shift();
     }
 }
+
+window.addEventListener("resize", function(){
+    var e = document.getElementsByClassName("alert");
+    if (e.length) {
+        e = e[0];
+        e.style.marginLeft = Math.max(window.innerHeight, window.innerWidth) / 2 - 220 + "px";
+        e.style.marginTop = Math.min(window.innerHeight, window.innerWidth) / 2 - 150 + "px";
+    }
+});
 
 async function alert(title, context, button_context) {
     let e = document.createElement("div");
@@ -99,10 +112,6 @@ async function alert(title, context, button_context) {
     e_footer_inner.appendChild(center);
     e_footer.appendChild(e_footer_inner);
     e.appendChild(e_footer);
-
-    // 调整 e 的方位 
-    e.style.marginLeft = "calc(50% - 220px)";
-    e.style.marginTop = "calc(50vh - 150px)";
 
     // 输出内容
     alertInsert(e);

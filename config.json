@@ -1,0 +1,8 @@
+{
+    "url": {
+        "MVTitleImage": "https://assets-jp.honeyworks.info/assets/Assets/Music/MVTitleImages/{musicpart_id}.png",
+        "Video":"https://assets-jp.honeyworks.info/assets/CriwareCpks/MV/{musicpart_id}/{musicpart_id}.mp4",
+        "Audio":"https://assets-jp.honeyworks.info/assets/CriwareCpks/MV/{musicpart_id}/{musicpart_id}.cpk_unpacked/output/{musicpart_id}.wav",
+        "Logo":"https://assets-jp.honeyworks.info/assets/Assets/Music/MusicLogo/{music_id}_logo.png"
+    }
+}

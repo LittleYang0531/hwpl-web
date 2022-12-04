@@ -1,11 +1,13 @@
 @media screen and (orientation: portrait) {
     body {
+        transform-origin: 0% 0%;
         -webkit-transform:rotate(90deg);
         -moz-transform: rotate(90deg);
         -ms-transform: rotate(90deg);
         transform: rotate(90deg);
+        top: 0px;
+        left: 100%;
     }
-    
 }
 @media screen and (orientation: landscape) {
     body {
@@ -13,6 +15,8 @@
         -moz-transform: rotate(0);
         -ms-transform: rotate(0);
         transform: rotate(0);
+        top: 0px;
+        left: 0px;
     }
 }
 
@@ -28,6 +32,7 @@ body {
     touch-action: none;
     background-color: black;
     overflow: hidden;
+    position: absolute;
     font-family: AokaneEB;
 }
 
@@ -45,6 +50,8 @@ TextView {
     color: white;
     font-weight: 400;
     font-size: 14px;
+    line-height: 16px;
+    font-family: AokaneEB;
 }
 
 Button {

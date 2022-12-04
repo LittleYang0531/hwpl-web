@@ -1,4 +1,4 @@
-@keyframes gameTitle {
+@keyframes game {
     from {
         opacity: 0;
     } to {
@@ -11,6 +11,97 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    animation: gameTitle 0.3s linear;
+    animation: game 0.3s linear;
     background-color: black;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+}
+
+@keyframes gameTitle-image {
+    0% {
+        width: 75vmin;
+        height: 45vmin;
+        left: 30vmax;
+        top: 27.5vmin;
+        transform: rotate(0deg);
+        opacity: 0;
+    } 
+    25% {
+        width: 75vmin;
+        height: 45vmin;
+        left: 30vmax;
+        top: 27.5vmin;
+        transform: rotate(-15deg);
+        opacity: 1;
+    }
+    100% {
+        width: 105vmin;
+        height: 63vmin;
+        left: 45vmax;
+        top: 10vmin;
+        transform: rotateZ(15deg) rotateY(360deg);
+        opacity: 1;
+    }
+}
+
+.gameTitle-image {
+    width: 105vmin;
+    height: 63vmin;
+    left: 45vmax;
+    top: 10vmin;
+    transform: rotateZ(15deg) rotateY(360deg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: gameTitle-image 2.4s ease-in-out;
+    position: absolute;
+}
+
+.gameTitle-logo {
+    height: 15vmin;
+}
+
+@keyframes gameTitle-info {
+    from {
+        left: 20vmax;
+        opacity: 0;
+    } to {
+        left: 15vmax;
+        opacity: 1;
+    }
+}
+
+.gameTitle-info {
+    position: absolute;
+    left: 15vmax;
+    bottom: 10vmin;
+    color: white;
+    opacity: 1;
+    animation: gameTitle-info 0.5s linear;
+}
+
+.gameTitle-flex {
+    display: flex;
+    display: -webkit-flex;
+}
+
+.gameTitle-flex > div > p {
+    height: 21px;
+    margin: 0px;
+}
+
+@media screen and (min-width: 1200px) {
+    .gameTitle-flex > div > p > TextView {
+        font-size: 18px!important;
+    }
+    .gameTitle-flex > div > p {
+        height: 26px!important;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .gameTitle-logo {
+        height: 20vmin!important;
+    }
 }
