@@ -22,7 +22,7 @@
 
 @font-face {
     font-family: 'AokaneEB';
-    src: url("./font/FOT-Aokane\ Std\ EB.otf");
+    src: url("./font/FOT-AokaneStd-EB.otf");
 }
 
 body {
@@ -33,7 +33,7 @@ body {
     background-color: black;
     overflow: hidden;
     position: absolute;
-    font-family: AokaneEB;
+    /* font-family: AokaneEB; */
 }
 
 

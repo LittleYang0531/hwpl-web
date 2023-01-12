@@ -6,16 +6,10 @@ function sleep(milliseconds) {
     });
 }
 
-async function loadStaticResource(url, onprogress = false) {
+async function loadStaticResource(url) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url);
-    if (onprogress) document.getElementById("loading-text").innerHTML = "";
-    xhr.onprogress = function(event){
-        event = event || window.event;
-        var loaded = event.loaded;
-        var total = event.total;
-        if (onprogress) document.getElementById("loading-text").innerHTML = "(" + loaded + "/" + total + ")";
-    };
+    console.log("Loading asset: " + url);
     xhr.overrideMimeType("text/css");
     try {
         xhr.send('');
@@ -25,8 +19,7 @@ async function loadStaticResource(url, onprogress = false) {
         throw error(e);
     }
     while (xhr.readyState != 4) await sleep(10);
-    if (onprogress) document.getElementById("loading-text").innerHTML = "";
-    await sleep(10);
+    // await sleep(10000);
     return xhr.responseText;
 }
 
@@ -49,8 +42,18 @@ async function loadJSScript(url) {
 async function init() {
     var domain = document.domain;
 
+    // 绘制进度条
+    document.body.style.backgroundColor = "black";
+    var progress = document.getElementById("progress");
+    var progress_text = document.getElementById("loading-text-TextView");
+    var progress_percent = document.getElementById("loading-percent-TextView");
+    progress.style.bottom = window.innerHeight * 0.05 + "px";
+    progress = document.getElementById("progress-loaded");
+    progress_text.innerHTML = "コンフィグ取得中";
+
     // 加载配置文件 
     var json = await loadStaticResource("//" + domain + "/config.json");
+    document.getElementById("progress-bar").style.display = "block";
     config = JSON.parse(json); 
 
     // 加载资源目录文件 
@@ -58,51 +61,36 @@ async function init() {
     var arr = JSON.parse(json); 
     assets_object = arr;
 
-    // 绘制进度条
-    document.body.style.backgroundColor = "black";
-    var progress = document.getElementById("progress");
-    var progress_text = document.getElementById("text");
-    progress.style.bottom = window.innerHeight * 0.05 + "px";
-    progress = document.getElementById("progress-loaded");
-    var sum = arr["js"].length + arr["css"].length + arr["assets"].length;
+    progress.style.width = "10%";
+    progress_percent.innerHTML = "10%";
+    await sleep(2000);
+    progress_text.innerHTML = "ゲームデータ取得中";
+    var sum = arr["assets"].length;
     var loaded = 0;
 
     // 加载资源文件
-    for (i = 0; i < arr["assets"].length; i++) {
+    for (var i = 0; i < arr["assets"].length; i++) {
         var name = arr["assets"][i][0].split("/");
-        progress_text.innerHTML = "Loading " + name[name.length - 1] + "...";
+        name = name[name.length - 1];
         await sleep(10);
         var url = arr["url"] + arr["assets"][i][1];
         if (arr["assets"][i].length > 2) url = arr["assets"][i][2] + arr["assets"][i][1];
-        await loadStaticResource(url, true);
+        var ext = name.split(".");
+        ext = ext[ext.length - 1];
+        if (ext == "css") await loadCSSScript(url);
+        else if (ext == "js") await loadJSScript(url);
+        else await loadStaticResource(url);
         loaded++;
-        progress.style.width = loaded / sum * 100 + "%";
+        progress.style.width = loaded / sum * 80 + 10 + "%";
+        progress_percent.innerHTML = Math.round(loaded / sum * 80 + 10) + "%";
     }
 
-    // 加载样式表文件
-    for (i = 0; i < arr["css"].length; i++) {
-        var name = arr["css"][i][0].split("/");
-        progress_text.innerHTML = "Loading " + name[name.length - 1] + "...";
-        await sleep(10);
-        var url = arr["url"] + arr["css"][i][1];
-        if (arr["css"][i].length > 2) url = arr["css"][i][2] + arr["css"][i][1];
-        await loadCSSScript(url, true);
-        loaded++;
-        progress.style.width = loaded / sum * 100 + "%";
-    }
-
-    // 加载js脚本
-    for (i = 0; i < arr["js"].length; i++) {
-        var name = arr["js"][i][0].split("/");
-        progress_text.innerHTML = "Loading " + name[name.length - 1] + "...";
-        await sleep(10);
-        var url = arr["url"] + arr["js"][i][1];
-        if (arr["js"][i].length > 2) url = arr["js"][i][2] + arr["js"][i][1];
-        await loadJSScript(url, true);
-        loaded++;
-        progress.style.width = loaded / sum * 100 + "%";
-    }
-
-    progress_text.innerHTML = "Resource Loaded!";
     await sleep(2000);
+    progress_text.innerHTML = "ロード中";
+
+    await sleep(2000);
+    progress_percent.innerHTML = "100%";
+    progress.style.width = "100%";
+
+    await sleep(100);
 }

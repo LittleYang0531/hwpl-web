@@ -36,7 +36,7 @@ window.addEventListener("resize", function(){
     }
 });
 
-async function alert(title, context, button_context) {
+async function alertCustomed(title, context, button_context) {
     let e = document.createElement("div");
     e.classList.add("alert");
     

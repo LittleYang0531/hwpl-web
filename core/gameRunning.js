@@ -31,13 +31,22 @@ async function gameTitle() {
     // 显示歌曲基础信息
     basic = document.createElement("div");
     basic.classList.add("gameTitle-info");
+    // -> 歌曲logo
     logo = document.createElement("img");
     logo.classList.add("gameTitle-logo");
     logo.src = logo_url;
     basic.appendChild(logo);
-    document.body.appendChild(basic);
+    // -> 信息div
     flex = document.createElement("div");
     flex.classList.add("gameTitle-flex");
+    // -> 片段类型
+    var partdiv = document.createElement("div");
+    partdiv.classList.add("musicpart");
+    var parttext = document.createElement("TextView");
+    parttext.innerHTML = MusicParts_map[musicpart_id]["Name"];
+    partdiv.appendChild(parttext);
+    flex.appendChild(partdiv);
+    // -> 具体信息
     info = document.createElement("div");
     textview = document.createElement("TextView");
     textview.innerHTML = "歌: " + Singers_map[singer_id]["Name"];

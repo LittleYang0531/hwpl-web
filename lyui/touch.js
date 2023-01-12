@@ -14,7 +14,7 @@ function show_touch(x, y) {
     div_inner.style.backgroundImage = "url('/assets/touch-inner.png')";
     touch.appendChild(div_inner);
     document.body.appendChild(touch);
-    setTimeout(function(){document.body.removeChild(touch);}, 600);
+    setTimeout(function(){document.body.removeChild(touch);}, 800);
 }
 
 async function touch_init() {
@@ -28,7 +28,7 @@ async function touch_init() {
     if (isAndroid || isIos) {
         document.body.addEventListener("touchstart", function(event){
             event = event || window.event;
-            for (i = 0; i < event.touches.length; i++) {
+            for (var i = 0; i < event.touches.length; i++) {
                 var x = event.touches[i].clientX, y = event.touches[i].clientY;
                 show_touch(Math.round(x), Math.round(y));
             }

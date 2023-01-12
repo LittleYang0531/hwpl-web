@@ -20,7 +20,7 @@
 
 @keyframes gameTitle-image {
     0% {
-        width: 75vmin;
+        width: 80vmin;
         height: 45vmin;
         left: 30vmax;
         top: 27.5vmin;
@@ -28,29 +28,30 @@
         opacity: 0;
     } 
     25% {
-        width: 75vmin;
+        width: 80vmin;
         height: 45vmin;
         left: 30vmax;
         top: 27.5vmin;
-        transform: rotate(-15deg);
+        transform: rotate(-10deg);
         opacity: 1;
     }
     100% {
-        width: 105vmin;
+        width: 112vmin;
         height: 63vmin;
-        left: 45vmax;
+        left: 40vmax;
         top: 10vmin;
-        transform: rotateZ(15deg) rotateY(360deg);
+        transform: rotateZ(10deg) rotateY(360deg);
         opacity: 1;
     }
 }
 
 .gameTitle-image {
-    width: 105vmin;
+    width: 112vmin;
     height: 63vmin;
-    left: 45vmax;
+    left: 40vmax;
     top: 10vmin;
-    transform: rotateZ(15deg) rotateY(360deg);
+    transform: rotateZ(10deg) rotateY(360deg);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 1);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -60,21 +61,22 @@
 
 .gameTitle-logo {
     height: 15vmin;
+    margin-bottom: 5vmin;
 }
 
 @keyframes gameTitle-info {
     from {
-        left: 20vmax;
+        left: 15vmax;
         opacity: 0;
     } to {
-        left: 15vmax;
+        left: 10vmax;
         opacity: 1;
     }
 }
 
 .gameTitle-info {
     position: absolute;
-    left: 15vmax;
+    left: 10vmax;
     bottom: 10vmin;
     color: white;
     opacity: 1;
@@ -84,11 +86,18 @@
 .gameTitle-flex {
     display: flex;
     display: -webkit-flex;
+    align-items: center;
 }
 
 .gameTitle-flex > div > p {
-    height: 21px;
+    height: 18px;
     margin: 0px;
+}
+
+.gameTitle-flex > div > p > TextView {
+    font-family: HummingProB;
+    font-weight: 100;
+    font-size: 12px;
 }
 
 @media screen and (min-width: 1200px) {
@@ -96,12 +105,6 @@
         font-size: 18px!important;
     }
     .gameTitle-flex > div > p {
-        height: 26px!important;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    .gameTitle-logo {
-        height: 20vmin!important;
+        height: 28px!important;
     }
 }
