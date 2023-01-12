@@ -1,0 +1,39 @@
+{
+    "MasterVersion": 1669869000,
+    "CacheVersions": [
+        {
+            "Id": 1,
+            "Version": 2212011359
+        },
+        {
+            "Id": 2,
+            "Version": 2212011340
+        },
+        {
+            "Id": 3,
+            "Version": 2211301010
+        },
+        {
+            "Id": 4,
+            "Version": 2212011340
+        },
+        {
+            "Id": 5,
+            "Version": 2212011359
+        },
+        {
+            "Id": 6,
+            "Version": 2212011359
+        },
+        {
+            "Id": 7,
+            "Version": 2211162152
+        },
+        {
+            "Id": 8,
+            "Version": 2211251043
+        }
+    ],
+    "Code": 0,
+    "Message": null
+}
